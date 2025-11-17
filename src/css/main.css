@@ -1,0 +1,145 @@
+/* ===================================
+   Main CSS Entry Point
+   =================================== */
+
+/* Normalize/Reset */
+@import 'modern-normalize/modern-normalize.css';
+
+/* PhotoSwipe Core Styles */
+@import 'photoswipe/dist/photoswipe.css';
+
+/* Custom Styles */
+@import './variables.css';
+@import './base.css';
+@import './components.css';
+
+/* ===================================
+   Utility Classes
+   =================================== */
+
+/* Text alignment */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+/* Display utilities */
+.hidden { display: none; }
+.block { display: block; }
+.inline-block { display: inline-block; }
+.flex { display: flex; }
+.grid { display: grid; }
+
+/* Spacing utilities */
+.mt-0 { margin-top: 0; }
+.mb-0 { margin-bottom: 0; }
+.mt-1 { margin-top: var(--spacing-sm); }
+.mb-1 { margin-bottom: var(--spacing-sm); }
+.mt-2 { margin-top: var(--spacing-md); }
+.mb-2 { margin-bottom: var(--spacing-md); }
+.mt-3 { margin-top: var(--spacing-lg); }
+.mb-3 { margin-bottom: var(--spacing-lg); }
+
+/* Visibility utilities */
+@media (max-width: 767px) {
+  .hide-mobile { display: none !important; }
+}
+
+@media (min-width: 768px) {
+  .hide-desktop { display: none !important; }
+}
+
+/* Smooth scroll offset for anchor links */
+html {
+  scroll-padding-top: 2rem;
+}
+
+/* Loading state (optional - for lazy loading images) */
+img[loading="lazy"] {
+  opacity: 0;
+  transition: opacity var(--transition-speed-normal) var(--transition-easing);
+}
+
+img[loading="lazy"].loaded,
+img[loading="lazy"]:not([loading]) {
+  opacity: 1;
+}
+
+/* ===================================
+   Scroll Animations
+   =================================== */
+
+/* Fade-in animation for sections */
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-in-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger animation delays for feature cards */
+.feature-card.fade-in {
+  transition-delay: calc(var(--stagger-delay, 0) * 100ms);
+}
+
+/* Hero entrance animations */
+.hero-address {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 0.2s forwards;
+}
+
+.hero-title {
+  opacity: 0;
+  animation: fadeInUp 1s ease-out 0.4s forwards;
+}
+
+.hero-tagline {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 0.6s forwards;
+}
+
+.hero-stats {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 0.8s forwards;
+}
+
+.hero-price {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 1s forwards;
+}
+
+.scroll-indicator {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 1.2s forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in,
+  .hero-address,
+  .hero-title,
+  .hero-tagline,
+  .hero-stats,
+  .hero-price,
+  .scroll-indicator {
+    transition: none;
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

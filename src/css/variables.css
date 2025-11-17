@@ -1,0 +1,108 @@
+/* ===================================
+   CSS Custom Properties (Variables)
+   501 Heron Drive - Luxury Design System
+   =================================== */
+
+:root {
+  /* Colors - Elevated Luxury Palette */
+  --color-primary: #1A1A1A;              /* True black - sophisticated depth */
+  --color-primary-light: #4A4A4A;        /* Charcoal */
+  --color-secondary: #2C5F4F;            /* Deep forest green - Hill Country elegance */
+  --color-accent: #C9A961;               /* Gold - luxury accent */
+  --color-accent-bronze: #B87D4B;        /* Bronze/copper - secondary accent */
+  --color-text: #1A1A1A;                 /* True black for crisp readability */
+  --color-text-light: #6B6B6B;           /* Medium gray */
+  --color-text-lighter: #999999;         /* Light gray for subtle text */
+  --color-text-inverse: #FAF9F6;         /* Warm white */
+  --color-background: #FAF9F6;           /* Warm white - soft, inviting */
+  --color-background-alt: #F5F4F1;       /* Subtle cream variation */
+  --color-background-dark: #1A1A1A;      /* Dark sections */
+  --color-overlay: rgba(26, 26, 26, 0.5); /* Black overlay */
+  --color-overlay-light: rgba(26, 26, 26, 0.3);
+
+  /* Typography - Editorial & Sophisticated */
+  --font-family-primary: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont,
+                         'Segoe UI', sans-serif;
+  --font-family-heading: 'Gilda Display', Georgia, 'Times New Roman', serif;
+
+  --font-size-base: 18px;                /* Increased for editorial feel */
+  --font-size-small: 0.875rem;           /* 15.75px */
+  --font-size-large: 1.125rem;           /* 20.25px */
+  --font-size-xl: 1.5rem;                /* 27px */
+  --font-size-2xl: 2rem;                 /* 36px */
+  --font-size-3xl: 2.75rem;              /* 49.5px */
+  --font-size-4xl: 3.5rem;               /* 63px */
+  --font-size-5xl: 4.5rem;               /* 81px */
+  --font-size-6xl: 6rem;                 /* 108px - dramatic hero */
+
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.6;             /* Slightly more relaxed for editorial */
+  --line-height-relaxed: 1.8;
+
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.05em;         /* Editorial headline spacing */
+  --letter-spacing-wider: 0.1em;
+
+  /* Spacing - Generous for Luxury Feel */
+  --spacing-unit: 1rem;                             /* 18px base */
+  --spacing-xs: calc(var(--spacing-unit) * 0.25);   /* 4.5px */
+  --spacing-sm: calc(var(--spacing-unit) * 0.5);    /* 9px */
+  --spacing-md: var(--spacing-unit);                /* 18px */
+  --spacing-lg: calc(var(--spacing-unit) * 1.5);    /* 27px */
+  --spacing-xl: calc(var(--spacing-unit) * 2.5);    /* 45px */
+  --spacing-2xl: calc(var(--spacing-unit) * 4);     /* 72px */
+  --spacing-3xl: calc(var(--spacing-unit) * 6);     /* 108px */
+  --spacing-4xl: calc(var(--spacing-unit) * 8);     /* 144px */
+  --spacing-5xl: calc(var(--spacing-unit) * 10);    /* 180px */
+  --spacing-6xl: calc(var(--spacing-unit) * 12);    /* 216px - editorial luxury */
+  --spacing-7xl: calc(var(--spacing-unit) * 16);    /* 288px - dramatic spacing */
+
+  /* Layout */
+  --container-max-width: 1200px;
+  --container-max-width-narrow: 800px;              /* For introduction text */
+  --container-max-width-wide: 1400px;
+  --container-padding: var(--spacing-xl);           /* More generous */
+  --section-padding-y: var(--spacing-4xl);          /* Luxurious spacing */
+
+  /* Border Radius - Subtle and Refined */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-full: 9999px;
+
+  /* Shadows - Soft and Sophisticated */
+  --shadow-sm: 0 1px 3px rgba(47, 47, 47, 0.08);
+  --shadow-md: 0 4px 12px rgba(47, 47, 47, 0.08);
+  --shadow-lg: 0 8px 24px rgba(47, 47, 47, 0.1);
+  --shadow-xl: 0 16px 48px rgba(47, 47, 47, 0.12);
+  --shadow-hover: 0 12px 32px rgba(47, 47, 47, 0.15);
+
+  /* Transitions - Smooth and Refined */
+  --transition-speed-fast: 150ms;
+  --transition-speed-normal: 250ms;        /* PRD spec: 200-300ms */
+  --transition-speed-slow: 400ms;
+  --transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-easing-out: cubic-bezier(0, 0, 0.2, 1);  /* Ease-out */
+
+  /* Z-Index Scale */
+  --z-index-base: 1;
+  --z-index-dropdown: 100;
+  --z-index-overlay: 200;
+  --z-index-modal: 300;
+  --z-index-popover: 400;
+  --z-index-tooltip: 500;
+
+  /* Breakpoints (for reference in JS) */
+  --breakpoint-mobile: 320px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1024px;
+  --breakpoint-wide: 1440px;
+}
