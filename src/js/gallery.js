@@ -6,6 +6,42 @@
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import PhotoSwipe from 'photoswipe';
 
+// Import all gallery images so Vite includes them in the build
+import img0004 from '../assets/images/gallery/501_Heron_Drive_0004.jpg';
+import img0006 from '../assets/images/gallery/501_Heron_Drive_0006.jpg';
+import img0007 from '../assets/images/gallery/501_Heron_Drive_0007.jpeg';
+import img0008 from '../assets/images/gallery/501_Heron_Drive_0008.jpeg';
+import img0009 from '../assets/images/gallery/501_Heron_Drive_0009.jpeg';
+import img0010 from '../assets/images/gallery/501_Heron_Drive_0010.jpeg';
+import img0011 from '../assets/images/gallery/501_Heron_Drive_0011.jpeg';
+import img0012 from '../assets/images/gallery/501_Heron_Drive_0012.jpg';
+import img0013 from '../assets/images/gallery/501_Heron_Drive_0013.jpeg';
+import img0014 from '../assets/images/gallery/501_Heron_Drive_0014.jpeg';
+import img0015 from '../assets/images/gallery/501_Heron_Drive_0015.jpeg';
+import img0016 from '../assets/images/gallery/501_Heron_Drive_0016.jpeg';
+import img0017 from '../assets/images/gallery/501_Heron_Drive_0017.jpeg';
+import img0018 from '../assets/images/gallery/501_Heron_Drive_0018.jpeg';
+import img0019 from '../assets/images/gallery/501_Heron_Drive_0019.jpeg';
+import img0022 from '../assets/images/gallery/501_Heron_Drive_0022.jpeg';
+import img0023 from '../assets/images/gallery/501_Heron_Drive_0023.jpeg';
+import img0024 from '../assets/images/gallery/501_Heron_Drive_0024.jpeg';
+import img0026 from '../assets/images/gallery/501_Heron_Drive_0026.jpeg';
+import img0027 from '../assets/images/gallery/501_Heron_Drive_0027.jpeg';
+import img0028 from '../assets/images/gallery/501_Heron_Drive_0028.jpeg';
+import img0029 from '../assets/images/gallery/501_Heron_Drive_0029.jpeg';
+import img0030 from '../assets/images/gallery/501_Heron_Drive_0030.jpeg';
+import img0046 from '../assets/images/gallery/501_Heron_Drive_0046.jpg';
+import img0053 from '../assets/images/gallery/501_Heron_Drive_0053.jpg';
+import img0059 from '../assets/images/gallery/501_Heron_Drive_0059.jpg';
+
+// Import backyard carousel images
+import backyard1 from '../assets/images/backyard/backyard-concept-1.jpg';
+import backyard2 from '../assets/images/backyard/backyard-concept-2.jpg';
+import backyard3 from '../assets/images/backyard/backyard-concept-3.jpg';
+import backyard4 from '../assets/images/backyard/backyard-concept-4.jpg';
+import backyard5 from '../assets/images/backyard/backyard-concept-5.jpg';
+import backyard6 from '../assets/images/backyard/backyard-concept-6.jpg';
+
 /**
  * Initialize the photo gallery with PhotoSwipe
  */
@@ -111,148 +147,160 @@ export function addImagesToGallery(images) {
 export function loadPropertyImages() {
   const propertyImages = [
     {
-      src: '/src/assets/images/gallery/501_Heron_Drive_0004.jpg',
+      src: img0004,
       width: 1920,
       height: 1280,
       alt: '501 Heron Drive - Exterior view'
     },
     {
-      src: '/src/assets/images/gallery/501_Heron_Drive_0006.jpg',
+      src: img0006,
       width: 1920,
       height: 1280,
       alt: '501 Heron Drive - Property exterior'
     },
     {
-      src: '/src/assets/images/gallery/501_Heron_Drive_0007.jpeg',
+      src: img0007,
       width: 1920,
       height: 1280,
       alt: '501 Heron Drive - Modern architecture'
     },
     {
-      src: '/src/assets/images/gallery/501_Heron_Drive_0008.jpeg',
+      src: img0008,
       width: 1920,
       height: 1280,
       alt: '501 Heron Drive - Living space'
     },
     {
-      src: '/src/assets/images/gallery/501_Heron_Drive_0009.jpeg',
+      src: img0009,
       width: 1920,
       height: 1280,
       alt: '501 Heron Drive - Interior view'
     },
     {
-      src: '/src/assets/images/gallery/501_Heron_Drive_0010.jpeg',
+      src: img0010,
       width: 1920,
       height: 1280,
       alt: '501 Heron Drive - Kitchen area'
     },
     {
-      src: '/src/assets/images/gallery/501_Heron_Drive_0011.jpeg',
+      src: img0011,
       width: 1920,
       height: 1280,
       alt: '501 Heron Drive - Dining space'
     },
     {
-      src: '/src/assets/images/gallery/501_Heron_Drive_0012.jpg',
+      src: img0012,
       width: 1920,
       height: 1280,
       alt: '501 Heron Drive - Open floor plan'
     },
     {
-      src: '/src/assets/images/gallery/501_Heron_Drive_0013.jpeg',
+      src: img0013,
       width: 1920,
       height: 1280,
       alt: '501 Heron Drive - Modern kitchen'
     },
     {
-      src: '/src/assets/images/gallery/501_Heron_Drive_0014.jpeg',
+      src: img0014,
       width: 1920,
       height: 1280,
       alt: '501 Heron Drive - Living room'
     },
     {
-      src: '/src/assets/images/gallery/501_Heron_Drive_0015.jpeg',
+      src: img0015,
       width: 1920,
       height: 1280,
       alt: '501 Heron Drive - Interior detail'
     },
     {
-      src: '/src/assets/images/gallery/501_Heron_Drive_0016.jpeg',
+      src: img0016,
       width: 1920,
       height: 1280,
       alt: '501 Heron Drive - Bedroom'
     },
     {
-      src: '/src/assets/images/gallery/501_Heron_Drive_0017.jpeg',
+      src: img0017,
       width: 1920,
       height: 1280,
       alt: '501 Heron Drive - Master bedroom'
     },
     {
-      src: '/src/assets/images/gallery/501_Heron_Drive_0018.jpeg',
+      src: img0018,
       width: 1920,
       height: 1280,
       alt: '501 Heron Drive - Bedroom space'
     },
     {
-      src: '/src/assets/images/gallery/501_Heron_Drive_0019.jpeg',
+      src: img0019,
       width: 1920,
       height: 1280,
       alt: '501 Heron Drive - Bathroom'
     },
     {
-      src: '/src/assets/images/gallery/501_Heron_Drive_0022.jpeg',
+      src: img0022,
       width: 1920,
       height: 1280,
       alt: '501 Heron Drive - Bathroom detail'
     },
     {
-      src: '/src/assets/images/gallery/501_Heron_Drive_0023.jpeg',
+      src: img0023,
       width: 1920,
       height: 1280,
       alt: '501 Heron Drive - Vanity'
     },
     {
-      src: '/src/assets/images/gallery/501_Heron_Drive_0024.jpeg',
+      src: img0024,
       width: 1920,
       height: 1280,
       alt: '501 Heron Drive - Spa bathroom'
     },
     {
-      src: '/src/assets/images/gallery/501_Heron_Drive_0026.jpeg',
+      src: img0026,
       width: 1920,
       height: 1280,
       alt: '501 Heron Drive - Additional bedroom'
     },
     {
-      src: '/src/assets/images/gallery/501_Heron_Drive_0027.jpeg',
+      src: img0027,
       width: 1920,
       height: 1280,
       alt: '501 Heron Drive - Guest room'
     },
     {
-      src: '/src/assets/images/gallery/501_Heron_Drive_0028.jpeg',
+      src: img0028,
       width: 1920,
       height: 1280,
       alt: '501 Heron Drive - Office space'
     },
     {
-      src: '/src/assets/images/gallery/501_Heron_Drive_0029.jpeg',
+      src: img0029,
       width: 1920,
       height: 1280,
       alt: '501 Heron Drive - Hallway'
     },
     {
-      src: '/src/assets/images/gallery/501_Heron_Drive_0030.jpeg',
+      src: img0030,
       width: 1920,
       height: 1280,
       alt: '501 Heron Drive - Entry'
     },
     {
-      src: '/src/assets/images/gallery/501_Heron_Drive_0046.jpg',
+      src: img0046,
       width: 1920,
       height: 1280,
       alt: '501 Heron Drive - Preserve views'
+    },
+    {
+      src: img0053,
+      width: 1920,
+      height: 1280,
+      alt: '501 Heron Drive - Outdoor views'
+    },
+    {
+      src: img0059,
+      width: 1920,
+      height: 1280,
+      alt: '501 Heron Drive - Additional exterior'
     }
   ];
 
@@ -268,27 +316,27 @@ export function loadBackyardCarousel() {
 
   const backyardImages = [
     {
-      src: '/src/assets/images/backyard/backyard-concept-1.jpg',
+      src: backyard1,
       alt: 'Multi-level deck system with circular entertaining platform and Hill Country preserve views'
     },
     {
-      src: '/src/assets/images/backyard/backyard-concept-2.jpg',
+      src: backyard2,
       alt: 'Elevated deck with modern railing system overlooking Balcones preserve and terraced pathways'
     },
     {
-      src: '/src/assets/images/backyard/backyard-concept-3.jpg',
+      src: backyard3,
       alt: 'Close-up view of cable railing system and stone pathway integration on sloped terrain'
     },
     {
-      src: '/src/assets/images/backyard/backyard-concept-4.jpg',
+      src: backyard4,
       alt: 'Upper deck level with dining area connected to main house and preserve access'
     },
     {
-      src: '/src/assets/images/backyard/backyard-concept-5.jpg',
+      src: backyard5,
       alt: 'Fire pit area and native plantings showing landscape architecture plan for slope'
     },
     {
-      src: '/src/assets/images/backyard/backyard-concept-6.jpg',
+      src: backyard6,
       alt: 'Complete backyard transformation rendering with multiple outdoor living zones and preserve integration'
     }
   ];
