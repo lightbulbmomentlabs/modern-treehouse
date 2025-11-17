@@ -12,6 +12,11 @@ node_modules
 dist-ssr
 *.local
 
+# Keep Node.js config files local only (prevent App Platform detection)
+package.json
+package-lock.json
+vite.config.js
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

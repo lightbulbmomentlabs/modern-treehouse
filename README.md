@@ -2,6 +2,25 @@
 
 A beautiful, performant one-page website for showcasing your home listing. Built with modern web technologies including HTML5, CSS3, and vanilla JavaScript, featuring video backgrounds, YouTube embeds, and an interactive photo gallery.
 
+## ⚡ Static Site Deployment
+
+**This repository is configured for static hosting (no Node.js runtime required).**
+
+- The `/dist` folder contains pre-built, production-ready static files
+- Deploy directly to Digital Ocean App Platform, Netlify, Vercel, or any static host
+- **No build process needed** = No App Platform charges
+- Node.js config files (`package.json`, `vite.config.js`) are kept locally only for development
+
+### Quick Deploy to Digital Ocean
+
+1. Create new App in Digital Ocean App Platform
+2. Connect to this GitHub repository
+3. Select **Static Site** (not Web Service)
+4. Set output directory: `dist`
+5. Deploy! (FREE tier eligible)
+
+The `.do/app.yaml` configuration ensures Digital Ocean deploys as a static site.
+
 ## Features
 
 - 🎥 **Video Background** - Eye-catching hero section with video background and smart fallbacks
@@ -50,6 +69,10 @@ modern-treehouse/
 
 ## Getting Started
 
+### For Local Development Only
+
+**Note:** Node.js is only needed for local development. The GitHub repository contains pre-built static files in `/dist`.
+
 ### Prerequisites
 
 - Node.js (v18 or higher recommended)
@@ -57,22 +80,79 @@ modern-treehouse/
 
 ### Installation
 
-1. **Navigate to the project directory**
+If you want to make changes and rebuild the site locally:
+
+1. **Clone and navigate to the project directory**
    ```bash
    cd modern-treehouse
    ```
 
-2. **Install dependencies**
+2. **Create these files locally** (they're not in the repo):
+
+   `package.json`:
+   ```json
+   {
+     "name": "modern-treehouse",
+     "version": "1.0.0",
+     "type": "module",
+     "scripts": {
+       "dev": "vite",
+       "build": "vite build",
+       "preview": "vite preview"
+     },
+     "devDependencies": {
+       "vite": "^7.2.2",
+       "terser": "^5.36.0"
+     },
+     "dependencies": {
+       "photoswipe": "^5.4.4"
+     }
+   }
+   ```
+
+   `vite.config.js`:
+   ```javascript
+   import { defineConfig } from 'vite';
+
+   export default defineConfig({
+     build: {
+       outDir: 'dist',
+       assetsDir: 'assets',
+       minify: 'terser',
+       rollupOptions: {
+         output: {
+           assetFileNames: 'assets/[name]-[hash][extname]',
+           chunkFileNames: 'assets/[name]-[hash].js',
+           entryFileNames: 'assets/[name]-[hash].js'
+         }
+       }
+     },
+     server: {
+       port: 5173,
+       open: true
+     }
+   });
+   ```
+
+3. **Install dependencies**
    ```bash
    npm install
    ```
 
-3. **Start the development server**
+4. **Start the development server**
    ```bash
    npm run dev
    ```
 
    The site will open automatically at `http://localhost:5173`
+
+5. **Rebuild production files**
+   ```bash
+   npm run build
+   git add dist
+   git commit -m "Rebuild production files"
+   git push
+   ```
 
 ### Development Commands
 
