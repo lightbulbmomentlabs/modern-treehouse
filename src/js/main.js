@@ -6,6 +6,9 @@
 // Import styles
 import '../css/main.css';
 
+// Import featured image for meta tags (ensures Vite processes it)
+import featuredImage from '../assets/images/gfx/501-heron-dr-feat-image.jpg';
+
 // Import modules
 import { initGallery, loadPropertyImages, loadBackyardCarousel } from './gallery.js';
 
@@ -14,6 +17,9 @@ import { initGallery, loadPropertyImages, loadBackyardCarousel } from './gallery
  */
 function init() {
   console.log('🏡 501 Heron Drive - Initializing...');
+
+  // Update meta tags with processed image URL
+  updateMetaTags();
 
   // Initialize photo gallery
   initGallery();
@@ -46,6 +52,42 @@ function init() {
   setupVideoPlayer();
 
   console.log('✅ All components initialized');
+}
+
+/**
+ * Update meta tags with processed image URLs from Vite build
+ */
+function updateMetaTags() {
+  const baseUrl = window.location.origin;
+  const fullImageUrl = `${baseUrl}${featuredImage}`;
+
+  // Update Open Graph image
+  const ogImage = document.querySelector('meta[property="og:image"]');
+  if (ogImage) {
+    ogImage.setAttribute('content', fullImageUrl);
+  }
+
+  // Update Twitter image
+  const twitterImage = document.querySelector('meta[property="twitter:image"]');
+  if (twitterImage) {
+    twitterImage.setAttribute('content', fullImageUrl);
+  }
+
+  // Update structured data image
+  const structuredDataScript = document.querySelector('script[type="application/ld+json"]');
+  if (structuredDataScript) {
+    try {
+      const data = JSON.parse(structuredDataScript.textContent);
+      if (data.image) {
+        data.image = fullImageUrl;
+        structuredDataScript.textContent = JSON.stringify(data, null, 2);
+      }
+    } catch (e) {
+      console.warn('Could not update structured data image:', e);
+    }
+  }
+
+  console.log('Meta tags updated with featured image:', fullImageUrl);
 }
 
 /**
