@@ -51,6 +51,9 @@ function init() {
   // Setup video player
   setupVideoPlayer();
 
+  // Setup read more toggle
+  setupReadMore();
+
   console.log('✅ All components initialized');
 }
 
@@ -488,6 +491,46 @@ function setupVideoPlayer() {
   });
 
   console.log('Video player initialized');
+}
+
+/**
+ * Setup read more toggle for introduction section
+ * Smoothly expands/collapses additional paragraphs
+ */
+function setupReadMore() {
+  const readMoreBtn = document.getElementById('readMoreBtn');
+  const expandedContent = document.getElementById('introductionExpanded');
+
+  if (!readMoreBtn || !expandedContent) {
+    console.warn('Read more elements not found');
+    return;
+  }
+
+  readMoreBtn.addEventListener('click', () => {
+    const isExpanded = readMoreBtn.getAttribute('aria-expanded') === 'true';
+
+    if (isExpanded) {
+      // Collapse
+      readMoreBtn.setAttribute('aria-expanded', 'false');
+      expandedContent.classList.remove('expanded');
+    } else {
+      // Expand
+      readMoreBtn.setAttribute('aria-expanded', 'true');
+      expandedContent.classList.add('expanded');
+
+      // Smooth scroll to keep button in view after expansion
+      setTimeout(() => {
+        const buttonRect = readMoreBtn.getBoundingClientRect();
+        const isButtonVisible = buttonRect.top >= 0 && buttonRect.bottom <= window.innerHeight;
+
+        if (!isButtonVisible) {
+          readMoreBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 300);
+    }
+  });
+
+  console.log('Read more toggle initialized');
 }
 
 /**
