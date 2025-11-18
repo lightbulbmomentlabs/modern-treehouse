@@ -829,8 +829,7 @@
 
 /* Nearby Amenities Section */
 .amenities-section {
-  margin-top: var(--spacing-5xl);
-  padding-top: var(--spacing-4xl);
+  margin-top: var(--spacing-3xl);
 }
 
 .amenities-title {
