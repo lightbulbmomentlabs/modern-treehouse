@@ -738,6 +738,10 @@
   margin-top: var(--spacing-3xl);
 }
 
+.location-amenities .location-highlights {
+  margin-top: 0;
+}
+
 .location-highlight {
   display: flex;
   align-items: flex-start;
@@ -1631,6 +1635,10 @@
   .location-content {
     grid-template-columns: 1fr 1.2fr;
     align-items: start;
+  }
+
+  .location-amenities {
+    grid-column: 2;
   }
 
   .contact-content {
