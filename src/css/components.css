@@ -831,7 +831,6 @@
 .amenities-section {
   margin-top: var(--spacing-5xl);
   padding-top: var(--spacing-4xl);
-  border-top: 1px solid rgba(44, 95, 79, 0.15);
 }
 
 .amenities-title {
