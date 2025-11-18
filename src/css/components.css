@@ -1440,7 +1440,7 @@
 /* Mobile adjustments for notification */
 @media (max-width: 767px) {
   .contact-notification {
-    bottom: var(--spacing-md);
+    bottom: calc(var(--spacing-md) + 50px);
     right: var(--spacing-md);
     left: var(--spacing-md);
     max-width: none;
