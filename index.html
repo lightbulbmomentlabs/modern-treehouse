@@ -729,6 +729,25 @@
     </div>
   </div>
 
+  <!-- Live Viewer Count Notification -->
+  <div class="viewer-notification" id="viewerNotification">
+    <button class="viewer-close" id="viewerClose" aria-label="Close viewer count">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <div class="viewer-content">
+      <svg class="viewer-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+        <circle cx="12" cy="12" r="3"></circle>
+      </svg>
+      <span class="viewer-count" id="viewerCount">--</span>
+      <span class="viewer-label">viewing now</span>
+      <span class="viewer-change" id="viewerChange"></span>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="container">

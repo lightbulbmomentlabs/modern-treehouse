@@ -39,6 +39,9 @@ function init() {
   // Setup contact notification
   setupContactNotification();
 
+  // Setup live viewer count
+  setupViewerCount();
+
   // Setup video player
   setupVideoPlayer();
 
@@ -194,6 +197,215 @@ function setupContactNotification() {
   });
 
   console.log('Contact notification initialized');
+}
+
+/**
+ * Setup live viewer count notification
+ * Creates realistic sense of urgency with time-based viewer counts
+ */
+function setupViewerCount() {
+  const notification = document.getElementById('viewerNotification');
+  const countElement = document.getElementById('viewerCount');
+  const changeElement = document.getElementById('viewerChange');
+  const closeButton = document.getElementById('viewerClose');
+
+  if (!notification || !countElement || !changeElement || !closeButton) {
+    console.warn('Viewer notification elements not found');
+    return;
+  }
+
+  // Check if notification was dismissed this session
+  const isDismissed = sessionStorage.getItem('viewerNotificationDismissed');
+  if (isDismissed === 'true') {
+    console.log('Viewer notification already dismissed this session');
+    return;
+  }
+
+  // Cookie management
+  const COOKIE_NAME = 'mtViewerSeed';
+  const COOKIE_DURATION = 24 * 60 * 60 * 1000; // 24 hours
+
+  /**
+   * Get or create daily seed value for consistent counts
+   */
+  function getSeedValue() {
+    const cookies = document.cookie.split(';');
+    for (let cookie of cookies) {
+      const [name, value] = cookie.trim().split('=');
+      if (name === COOKIE_NAME) {
+        return parseInt(value);
+      }
+    }
+
+    // Create new seed
+    const seed = Math.floor(Math.random() * 1000) + 1;
+    const expires = new Date(Date.now() + COOKIE_DURATION).toUTCString();
+    document.cookie = `${COOKIE_NAME}=${seed}; expires=${expires}; path=/; SameSite=Lax`;
+    return seed;
+  }
+
+  /**
+   * Get realistic viewer count based on time and day
+   */
+  function getRealisticViewerCount(seedValue) {
+    const now = new Date();
+    const hour = now.getHours();
+    const day = now.getDay(); // 0 = Sunday, 6 = Saturday
+    const isWeekend = day === 0 || day === 6;
+
+    // Base ranges by hour (weekdays)
+    let minBase, maxBase;
+
+    if (hour >= 0 && hour < 6) {
+      // Late night / Early morning: 3-7
+      minBase = 3;
+      maxBase = 7;
+    } else if (hour >= 6 && hour < 9) {
+      // Morning commute: 8-15
+      minBase = 8;
+      maxBase = 15;
+    } else if (hour >= 9 && hour < 11) {
+      // Late morning: 12-22
+      minBase = 12;
+      maxBase = 22;
+    } else if (hour >= 11 && hour < 14) {
+      // Lunch peak: 18-35
+      minBase = 18;
+      maxBase = 35;
+    } else if (hour >= 14 && hour < 17) {
+      // Afternoon: 14-25
+      minBase = 14;
+      maxBase = 25;
+    } else if (hour >= 17 && hour < 21) {
+      // Evening peak: 22-42
+      minBase = 22;
+      maxBase = 42;
+    } else if (hour >= 21 && hour < 24) {
+      // Late evening: 10-18
+      minBase = 10;
+      maxBase = 18;
+    }
+
+    // Weekend adjustments
+    if (isWeekend) {
+      if (hour >= 0 && hour < 6) {
+        minBase = 3;
+        maxBase = 6;
+      } else if (hour >= 6 && hour < 9) {
+        minBase = 5;
+        maxBase = 10;
+      } else if (hour >= 9 && hour < 12) {
+        minBase = 12;
+        maxBase = 25;
+      } else if (hour >= 12 && hour < 18) {
+        // Weekend afternoon peak
+        minBase = 25;
+        maxBase = 42;
+      } else if (hour >= 18 && hour < 21) {
+        minBase = 18;
+        maxBase = 32;
+      } else if (hour >= 21 && hour < 24) {
+        minBase = 8;
+        maxBase = 15;
+      }
+    }
+
+    // Calculate base count from range
+    const range = maxBase - minBase;
+    const baseCount = minBase + Math.floor((seedValue % (range + 1)));
+
+    // Add user-specific offset (consistent per user)
+    const userOffset = (seedValue % 10) - 5; // ±5 variation
+
+    // Add micro variation for real-time feel
+    const microVariation = Math.floor(Math.random() * 5) - 2; // ±2
+
+    // Calculate final count
+    let finalCount = baseCount + userOffset + microVariation;
+
+    // Ensure within bounds
+    finalCount = Math.max(3, Math.min(42, finalCount));
+
+    return finalCount;
+  }
+
+  // State
+  let currentCount = 0;
+  let updateInterval = null;
+  let pulseInterval = null;
+  const seedValue = getSeedValue();
+
+  /**
+   * Update viewer count with optional change indicator
+   */
+  function updateCount(showChange = false) {
+    const previousCount = currentCount;
+    currentCount = getRealisticViewerCount(seedValue);
+
+    // Animate count change
+    countElement.textContent = currentCount;
+
+    // Show change indicator occasionally
+    if (showChange && previousCount > 0) {
+      const diff = currentCount - previousCount;
+
+      if (diff !== 0 && Math.random() > 0.5) {
+        changeElement.textContent = diff > 0 ? `+${diff}` : `${diff}`;
+        changeElement.className = 'viewer-change show ' + (diff > 0 ? 'positive' : 'negative');
+
+        // Hide after 2 seconds
+        setTimeout(() => {
+          changeElement.classList.remove('show');
+        }, 2000);
+      }
+    }
+  }
+
+  /**
+   * Start periodic updates with jitter
+   */
+  function startUpdates() {
+    // Update every 45-90 seconds (random for realism)
+    const updateFrequency = 45000 + Math.random() * 45000;
+
+    updateInterval = setInterval(() => {
+      updateCount(true);
+    }, updateFrequency);
+  }
+
+  /**
+   * Add subtle pulse effect periodically
+   */
+  function startPulse() {
+    pulseInterval = setInterval(() => {
+      notification.classList.add('pulse');
+      setTimeout(() => {
+        notification.classList.remove('pulse');
+      }, 2000);
+    }, 12000 + Math.random() * 6000); // Every 12-18 seconds
+  }
+
+  // Handle close button
+  closeButton.addEventListener('click', () => {
+    notification.classList.remove('show');
+    sessionStorage.setItem('viewerNotificationDismissed', 'true');
+    clearInterval(updateInterval);
+    clearInterval(pulseInterval);
+    console.log('Viewer notification dismissed');
+  });
+
+  // Initialize
+  updateCount(false);
+
+  // Show after 5-10 seconds (feels more organic)
+  const showDelay = 5000 + Math.random() * 5000;
+  setTimeout(() => {
+    notification.classList.add('show');
+    startUpdates();
+    startPulse();
+  }, showDelay);
+
+  console.log('Live viewer count initialized');
 }
 
 /**
