@@ -31,8 +31,6 @@ import img0028 from '../assets/images/gallery/501_Heron_Drive_0028.jpeg';
 import img0029 from '../assets/images/gallery/501_Heron_Drive_0029.jpeg';
 import img0030 from '../assets/images/gallery/501_Heron_Drive_0030.jpeg';
 import img0046 from '../assets/images/gallery/501_Heron_Drive_0046.jpg';
-import img0053 from '../assets/images/gallery/501_Heron_Drive_0053.jpg';
-import img0059 from '../assets/images/gallery/501_Heron_Drive_0059.jpg';
 
 // Import backyard carousel images
 import backyard1 from '../assets/images/backyard/backyard-concept-1.jpg';
@@ -289,18 +287,6 @@ export function loadPropertyImages() {
       width: 1920,
       height: 1280,
       alt: '501 Heron Drive - Preserve views'
-    },
-    {
-      src: img0053,
-      width: 1920,
-      height: 1280,
-      alt: '501 Heron Drive - Outdoor views'
-    },
-    {
-      src: img0059,
-      width: 1920,
-      height: 1280,
-      alt: '501 Heron Drive - Additional exterior'
     }
   ];
 
