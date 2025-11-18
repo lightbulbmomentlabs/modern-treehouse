@@ -1544,6 +1544,18 @@
   }
 }
 
+.viewer-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viewer-main {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
 .viewer-count {
   font-weight: 600;
   font-size: var(--font-size-base);
@@ -1556,6 +1568,14 @@
 .viewer-label {
   color: rgba(255, 255, 255, 0.8);
   white-space: nowrap;
+}
+
+.viewer-powered {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.4);
+  white-space: nowrap;
+  font-weight: 400;
+  letter-spacing: 0.02em;
 }
 
 .viewer-change {
@@ -1608,6 +1628,10 @@
 
   .viewer-label {
     font-size: 0.75rem;
+  }
+
+  .viewer-powered {
+    font-size: 0.6rem;
   }
 }
 
