@@ -816,6 +816,31 @@
   filter: grayscale(70%) contrast(110%) brightness(102%);
 }
 
+/* Nearby Amenities Section */
+.amenities-section {
+  margin-top: var(--spacing-5xl);
+  padding-top: var(--spacing-4xl);
+  border-top: 1px solid rgba(44, 95, 79, 0.15);
+}
+
+.amenities-title {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+  letter-spacing: -0.02em;
+}
+
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--spacing-xl);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 /* ========== Property Details & Appointments ========== */
 .property-details {
   background-color: var(--color-background-alt);
@@ -839,6 +864,10 @@
   .details-grid {
     grid-template-columns: repeat(4, 1fr);
     gap: var(--spacing-2xl);
+  }
+
+  .amenities-grid {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
