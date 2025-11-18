@@ -1571,7 +1571,7 @@
 }
 
 .viewer-powered {
-  font-size: 0.65rem;
+  font-size: 0.55rem;
   color: rgba(255, 255, 255, 0.4);
   white-space: nowrap;
   font-weight: 400;
@@ -1631,7 +1631,7 @@
   }
 
   .viewer-powered {
-    font-size: 0.6rem;
+    font-size: 0.5rem;
   }
 }
 
