@@ -720,6 +720,17 @@
   padding: var(--spacing-6xl) 0;
 }
 
+.location-intro {
+  max-width: 800px;
+  margin: 0 auto var(--spacing-4xl) auto;
+  text-align: center;
+  font-size: var(--font-size-large);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text);
+  text-wrap: pretty;
+  hyphens: auto;
+}
+
 .location-content {
   display: grid;
   grid-template-columns: 1fr;
