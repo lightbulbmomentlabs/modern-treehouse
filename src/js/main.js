@@ -321,56 +321,56 @@ function setupViewerCount() {
     let minBase, maxBase;
 
     if (hour >= 0 && hour < 6) {
-      // Late night / Early morning: 3-7
-      minBase = 3;
-      maxBase = 7;
+      // Late night / Early morning: 1-4
+      minBase = 1;
+      maxBase = 4;
     } else if (hour >= 6 && hour < 9) {
-      // Morning commute: 8-15
-      minBase = 8;
-      maxBase = 15;
+      // Morning commute: 3-8
+      minBase = 3;
+      maxBase = 8;
     } else if (hour >= 9 && hour < 11) {
-      // Late morning: 12-22
-      minBase = 12;
-      maxBase = 22;
+      // Late morning: 6-12
+      minBase = 6;
+      maxBase = 12;
     } else if (hour >= 11 && hour < 14) {
-      // Lunch peak: 18-35
-      minBase = 18;
-      maxBase = 35;
-    } else if (hour >= 14 && hour < 17) {
-      // Afternoon: 14-25
-      minBase = 14;
-      maxBase = 25;
-    } else if (hour >= 17 && hour < 21) {
-      // Evening peak: 22-42
-      minBase = 22;
-      maxBase = 42;
-    } else if (hour >= 21 && hour < 24) {
-      // Late evening: 10-18
+      // Lunch peak: 10-18
       minBase = 10;
       maxBase = 18;
+    } else if (hour >= 14 && hour < 17) {
+      // Afternoon: 7-14
+      minBase = 7;
+      maxBase = 14;
+    } else if (hour >= 17 && hour < 21) {
+      // Evening peak: 12-26
+      minBase = 12;
+      maxBase = 26;
+    } else if (hour >= 21 && hour < 24) {
+      // Late evening: 5-10
+      minBase = 5;
+      maxBase = 10;
     }
 
     // Weekend adjustments
     if (isWeekend) {
       if (hour >= 0 && hour < 6) {
-        minBase = 3;
-        maxBase = 6;
+        minBase = 1;
+        maxBase = 3;
       } else if (hour >= 6 && hour < 9) {
-        minBase = 5;
-        maxBase = 10;
+        minBase = 2;
+        maxBase = 6;
       } else if (hour >= 9 && hour < 12) {
-        minBase = 12;
-        maxBase = 25;
+        minBase = 7;
+        maxBase = 14;
       } else if (hour >= 12 && hour < 18) {
         // Weekend afternoon peak
-        minBase = 25;
-        maxBase = 42;
+        minBase = 14;
+        maxBase = 26;
       } else if (hour >= 18 && hour < 21) {
-        minBase = 18;
-        maxBase = 32;
+        minBase = 10;
+        maxBase = 18;
       } else if (hour >= 21 && hour < 24) {
-        minBase = 8;
-        maxBase = 15;
+        minBase = 4;
+        maxBase = 8;
       }
     }
 
@@ -388,7 +388,7 @@ function setupViewerCount() {
     let finalCount = baseCount + userOffset + microVariation;
 
     // Ensure within bounds
-    finalCount = Math.max(3, Math.min(42, finalCount));
+    finalCount = Math.max(1, Math.min(26, finalCount));
 
     return finalCount;
   }
