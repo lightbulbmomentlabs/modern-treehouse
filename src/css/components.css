@@ -500,6 +500,20 @@
   transform: scale(1.05);
 }
 
+/* Fallback for older browsers that don't support aspect-ratio */
+@supports not (aspect-ratio: 4 / 3) {
+  .gallery-item {
+    padding-bottom: 75%; /* 4:3 fallback (3/4 = 75%) */
+    height: 0;
+  }
+
+  .gallery-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
 /* ========== Backyard Carousel Section ========== */
 .backyard-carousel-section {
   background-color: var(--color-background);

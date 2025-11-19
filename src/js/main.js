@@ -166,14 +166,22 @@ function setupScrollAnimations() {
   // Check if IntersectionObserver is supported
   if (!('IntersectionObserver' in window)) {
     console.warn('IntersectionObserver not supported - scroll animations disabled');
+    // Make all sections visible immediately as fallback
+    const sections = document.querySelectorAll(
+      '.introduction, .features, .gallery-section, .location, .contact'
+    );
+    sections.forEach((section) => {
+      section.classList.add('fade-in-visible');
+    });
     return;
   }
 
   // Observe all sections for fade-in animation
+  // Adjusted for better Safari/iOS compatibility
   const observerOptions = {
     root: null,
-    rootMargin: '0px',
-    threshold: 0.1,
+    rootMargin: '50px', // Trigger earlier for Safari
+    threshold: 0.05, // Lower threshold for better iOS Safari detection
   };
 
   const observer = new IntersectionObserver((entries) => {
@@ -195,6 +203,17 @@ function setupScrollAnimations() {
     section.classList.add('fade-in');
     observer.observe(section);
   });
+
+  // Fallback: Force visibility after 2 seconds if observer hasn't triggered
+  // This prevents content from staying invisible on Safari if observer fails
+  setTimeout(() => {
+    sections.forEach((section) => {
+      if (!section.classList.contains('fade-in-visible')) {
+        console.warn('Forcing visibility for section:', section.className);
+        section.classList.add('fade-in-visible');
+      }
+    });
+  }, 2000);
 
   // Observe individual feature cards for stagger effect
   const featureCards = document.querySelectorAll('.feature-card');
