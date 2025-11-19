@@ -121,16 +121,6 @@ export function addImagesToGallery(images) {
     img.alt = image.alt || `Property photo ${index + 1}`;
     img.loading = 'lazy';
 
-    // Add loaded class when image loads
-    img.addEventListener('load', () => {
-      img.classList.add('loaded');
-    });
-
-    // Handle images that may already be cached
-    if (img.complete) {
-      img.classList.add('loaded');
-    }
-
     link.appendChild(img);
     galleryElement.appendChild(link);
   });

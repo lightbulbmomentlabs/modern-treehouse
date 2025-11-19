@@ -53,16 +53,6 @@ html {
   scroll-padding-top: 2rem;
 }
 
-/* Loading state (optional - for lazy loading images) */
-img[loading="lazy"] {
-  opacity: 0;
-  transition: opacity var(--transition-speed-normal) var(--transition-easing);
-}
-
-img[loading="lazy"].loaded,
-img[loading="lazy"]:not([loading]) {
-  opacity: 1;
-}
 
 /* ===================================
    Scroll Animations
